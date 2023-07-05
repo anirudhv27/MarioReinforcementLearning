@@ -42,6 +42,7 @@ class ReplayBuffer:
 
 class DeepQNet(nn.Module):
     def __init__(self, input_shape, out_actions):
+        super().__init__()
         self.conv1 = nn.Conv2d(
             in_channels=input_shape[0], out_channels=16, kernel_size=8, stride=4
         )
@@ -54,7 +55,7 @@ class DeepQNet(nn.Module):
 
     def forward(self, x):
         x = nn.ReLU(self.conv1(x))
-        x = nn.ReLU(self.conv1(x))
+        x = nn.ReLU(self.conv2(x))
         x = torch.flatten(x)
         x = nn.ReLU(self.fc1(x))
         return self.fc2(x)

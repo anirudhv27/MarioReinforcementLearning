@@ -1,7 +1,7 @@
 import gymnasium as gym
 from dqn import DeepQNet, ReplayBuffer
 
-env = gym.make("Breakout-v0", render_mode="human")
+env = gym.make("Breakout-v4", render_mode="human")
 
 INPUT_SHAPE = (4, 84, 84)
 OUT_ACTIONS = 3
