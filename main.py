@@ -12,10 +12,9 @@ BATCH_SIZE = 32
 buffer = ReplayBuffer(N, batch_size=BATCH_SIZE)
 q = DeepQNet(input_shape=INPUT_SHAPE, out_actions=OUT_ACTIONS)
 
-observation, info = env.reset(seed=42)
 for i in range(M):
-    img = env.render()
-    print(img.shape)
+    state = env.reset()
+    print(state)
 
     action = env.action_space.sample()  # this is where you would insert your policy
 
