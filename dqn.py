@@ -16,7 +16,9 @@ from torch import nn
 from collections import deque, namedtuple
 import random
 
-
+# def preprocess_image(img):
+#     img =
+#     pass
 class ReplayBuffer:
     """
     Class representing replay buffer, which

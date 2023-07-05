@@ -15,6 +15,7 @@ q = DeepQNet(input_shape=INPUT_SHAPE, out_actions=OUT_ACTIONS)
 for i in range(M):
     state = env.reset()
     print(state[0].shape)
+    print(type(state[0]))
 
     action = env.action_space.sample()  # this is where you would insert your policy
 
