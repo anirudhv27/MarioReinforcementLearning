@@ -1,27 +1,39 @@
-import gymnasium as gym
-from dqn import DeepQNet, ReplayBuffer
+# %%
+import torch
+from torch import nn
+from torchvision import transforms as T
+from PIL import Image
+import numpy as np
+from pathlib import Path
+from collections import deque
+import random, datetime, os, copy
 
-env = gym.make("Breakout-v4", render_mode="human")
+import matplotlib.pyplot as plt
 
-INPUT_SHAPE = (4, 84, 84)
-OUT_ACTIONS = 3
-M = 10_000_000
-N = int(1e5)
-BATCH_SIZE = 32
+# Gym is an OpenAI toolkit for RL
+import gym
+from gym.spaces import Box
+from gym.wrappers import FrameStack
 
-buffer = ReplayBuffer(N, batch_size=BATCH_SIZE)
-q = DeepQNet(input_shape=INPUT_SHAPE, out_actions=OUT_ACTIONS)
+# NES Emulator for OpenAI Gym
+from nes_py.wrappers import JoypadSpace
+f
+# Super Mario environment for OpenAI Gym
+import gym_super_mario_bros
+from gym_super_mario_bros.actions import SIMPLE_MOVEMENT
 
-for i in range(M):
-    state = env.reset()
-    print(state[0].shape)
-    print(type(state[0]))
+from tensordict import TensorDict
+from torchrl.data import TensorDictReplayBuffer, LazyMemmapStorage
+# %%
+env = gym_super_mario_bros.make('SuperMarioBros-v3')
+env = JoypadSpace(env, SIMPLE_MOVEMENT)
 
-    action = env.action_space.sample()  # this is where you would insert your policy
-
-    observation, reward, terminated, truncated, info = env.step(action)
-
-    if terminated or truncated:
-        observation, info = env.reset()
+done = True
+for step in range(5000):
+    if done:
+        state = env.reset()
+    state, reward, done, info = env.step(env.action_space.sample())
+    env.render()
 
 env.close()
+# %%
