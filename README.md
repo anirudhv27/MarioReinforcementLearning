@@ -1,6 +1,6 @@
-# Atari Reinforcement Learning
+# Mario Reinforcement Learning
 
-Implementing reinforcement learning concepts from scratch to play Atari games.
+Implementing reinforcement learning concepts from scratch to play Mario.
 
 Any reinforcement learning (RL) project requires the implementation of an environment, a model architecture, and an agent (which receives observations from the environment and sends an action to the environment)
 
