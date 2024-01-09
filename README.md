@@ -1,4 +1,4 @@
-# Mario Reinforcement Learning
+# Mario Reinforcement Learning (project in progress)
 
 Implementing reinforcement learning concepts from scratch to play Mario.
 
